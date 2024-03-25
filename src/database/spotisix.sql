@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2024 at 06:42 PM
+-- Generation Time: Mar 25, 2024 at 07:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -104,6 +104,7 @@ CREATE TABLE `playcount` (
   `PlayCountID` int(11) NOT NULL,
   `ListenerID` int(11) DEFAULT NULL,
   `SongID` int(11) DEFAULT NULL,
+  `ArtistID` int(11) NOT NULL,
   `ListenDateTime` varchar(255) DEFAULT NULL,
   `token` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -112,15 +113,18 @@ CREATE TABLE `playcount` (
 -- Dumping data for table `playcount`
 --
 
-INSERT INTO `playcount` (`PlayCountID`, `ListenerID`, `SongID`, `ListenDateTime`, `token`) VALUES
-(2, NULL, 1, '1711387399', '6601b2481ed72'),
-(8, NULL, 1, '1711388195', '6601b2481ed72'),
-(9, NULL, 1, '1711387683', '6601b2481ed72'),
-(10, NULL, 1, '1711387704', '6601b2481ed72'),
-(11, NULL, 1, '1711388007', '6601b2481ed72'),
-(12, NULL, 1, '1711388018', '6601b2481ed72'),
-(13, NULL, 1, '1711388024', '6601b2481ed72'),
-(17, NULL, 2, '1711388397', '6601b2481ed72');
+INSERT INTO `playcount` (`PlayCountID`, `ListenerID`, `SongID`, `ArtistID`, `ListenDateTime`, `token`) VALUES
+(2, NULL, 1, 1, '1711387399', '6601b2481ed72'),
+(8, NULL, 1, 1, '1711388195', '6601b2481ed72'),
+(9, NULL, 1, 1, '1711387683', '6601b2481ed72'),
+(10, NULL, 1, 1, '1711387704', '6601b2481ed72'),
+(11, NULL, 1, 1, '1711388007', '6601b2481ed72'),
+(12, NULL, 1, 1, '1711388018', '6601b2481ed72'),
+(13, NULL, 1, 1, '1711388024', '6601b2481ed72'),
+(17, NULL, 2, 1, '1711388397', '6601b2481ed72'),
+(18, NULL, 3, 1, '1711390612', '6601b2481ed72'),
+(19, NULL, 4, 3, '1711390842', '6601b2481ed72'),
+(20, NULL, 3, 2, '1711390851', '6601b2481ed72');
 
 -- --------------------------------------------------------
 
@@ -198,7 +202,9 @@ CREATE TABLE `songs` (
 
 INSERT INTO `songs` (`SongID`, `SongName`, `SongSlug`, `SongLogo`, `ArtistID`, `AlbumID`, `Duration`, `FilePath`) VALUES
 (1, 'Chúng Ta Của Tương Lai', 'chung-ta-cua-tuong-lai', '/assets/img/ctqtl.png', 1, NULL, '08/03/2024', '/assets/music/chung-ta-cua-tuong-lai.mp3'),
-(2, 'Chúng Ta Của Hiện Tại', 'chung-ta-cua-hien-tai', '/assets/img/ctqht.png', 1, NULL, '20/12/2020', '/assets/music/chung-ta-cua-hien-tai.mp3');
+(2, 'Chúng Ta Của Hiện Tại', 'chung-ta-cua-hien-tai', '/assets/img/ctqht.png', 1, NULL, '20/12/2020', '/assets/music/chung-ta-cua-hien-tai.mp3'),
+(3, 'Blank Space', 'blank-space', '/assets/img/bank-space.png', 2, NULL, '10/11/2014', '/assets/music/BlankSpace-TaylorSwift-12613798.mp3'),
+(4, 'Thiên Lý Ơi', 'thien-ly-oi', '/assets/img/tlo.png', 3, NULL, '22/2/2024', '/assets/music/ThienLyOi-JackJ97-13829746.mp3');
 
 --
 -- Indexes for dumped tables
@@ -240,7 +246,8 @@ ALTER TABLE `listeners`
 ALTER TABLE `playcount`
   ADD PRIMARY KEY (`PlayCountID`),
   ADD KEY `ListenerID` (`ListenerID`),
-  ADD KEY `SongID` (`SongID`);
+  ADD KEY `SongID` (`SongID`),
+  ADD KEY `ArtistID` (`ArtistID`);
 
 --
 -- Indexes for table `playlistdetails`
@@ -313,7 +320,7 @@ ALTER TABLE `listeners`
 -- AUTO_INCREMENT for table `playcount`
 --
 ALTER TABLE `playcount`
-  MODIFY `PlayCountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `PlayCountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `playlistdetails`
@@ -337,7 +344,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `SongID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `SongID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

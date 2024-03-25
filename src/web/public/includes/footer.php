@@ -1,22 +1,46 @@
-<section class="news-letter-section-02 texture-bg pt-120 pb-120">
-    <div class="container">
-        <div class="row g-sm-6 g-2">
-            <div class="col-lg-8" data-aos="fade-right" data-aos-duration="1000">
-                <h3 class="display-four">Stay in Our Newsletter</h3>
-            </div>
-            <div class="col-lg-4" data-aos="fade-left" data-aos-duration="1000">
-                <div class="input-area alt">
-                    <input type="email" class="py-1" placeholder="Type your email">
-                    <button class="icon-btn">
-                        <span class="icon alt-size fs-xl fw-bold">
-                            <i class="ti ti-send"></i>
-                        </span>
-                    </button>
+<section class="news-letter-section texture-bg-2 pb-120" id="newsletter" data-aos="fade-up">
+        <div class="container news-letter-wrapper rounded-4">
+            <div class="row justify-content-between">
+                <div class="col-xxl-6 col-xl-7 col-lg-8 pt-sm-20 pt-10 pb-lg-20 pb-sm-10 pb-6">
+                    <div class="news-letter-content text-center text-lg-start pt-xxl-10 pb-xxl-10">
+                        <h4 class="display-four fw-bold tcn-700 mb-lg-10 mb-sm-6 mb-4">
+                           Đăng ký tải nhạc lên hệ thống của chúng tôi
+                        </h4>
+                        <form action="#">
+                            <div class="input-area alt">
+                                <input type="email" placeholder="Enter email">
+                                <button type="submit" class="bttn-1 subscrib-btn">
+                                    <span class="text fw-semibold">Subscribe</span>
+                                    <span class=" icon d-center icon-right">
+                                        <i class="ti ti-arrow-narrow-right"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-4">
+                    <div class="news-letter-banner-wrapper">
+                        <div class="record-img top-img">
+                            <div class="record-img-animation d-flex">
+                                <img class="w-100" src="/assets/img/record-3.png" alt="record">
+                                <img class="w-100" src="/assets/img/record-3.png" alt="record">
+                            </div>
+                        </div>
+                        <div class="news-letter-banner">
+                            <img class="w-100" src="/assets/img/record-mic.png" alt="microphone">
+                        </div>
+                        <div class="record-img bottom-img">
+                            <div class="record-img-animation d-flex">
+                                <img class="w-100" src="/assets/img/record-3.png" alt="record">
+                                <img class="w-100" src="/assets/img/record-3.png" alt="record">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 <footer class="footer-section texture-bg-2">
     <div class="container">
         <!-- footer menu -->

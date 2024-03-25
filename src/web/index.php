@@ -103,12 +103,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
         <div class="row g-6">
             <div class="col-xl-8">
                 <div class="blog-details-content-wrapper d-grid gap-6 p-xxl-6 p-lg-4 p-3 rounded bgc-3">
-                    <h4 class="fw-semibold">Top #100</h4>
+                    <h4 class="fw-semibold">Nhạc mới cập nhập</h4>
                     <span class="d-block border-dashed"></span>
                     <div class="container">
 
                         <div class="row g-6">
-                            <?php foreach ($duogxaolin->get_list("SELECT * FROM `songs` LIMIT 10 ") as $row) {
+                            <?php foreach ($duogxaolin->get_list("SELECT * FROM `songs`  ORDER BY `SongID` DESC LIMIT 10") as $row) {
                                 $singer = $row['ArtistID'];
                                 $artist = $duogxaolin->get_row("SELECT * FROM `artists` WHERE `ArtistID` = '$singer'");
                             ?>
@@ -126,7 +126,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
 
                         </div>
 
-                        <!-- pagination start -->
+                        <!-- pagination start 
                         <div class="row justify-content-center mt-lg-10 mt-6">
                             <div class="col-6">
                                 <nav class="pagination d-center aos-init aos-animate" aria-label="pagination" data-aos="fade-up">
@@ -148,7 +148,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
                                 </nav>
                             </div>
                         </div>
-                        <!-- pagination end -->
+                       -->
 
                     </div>
                 </div>
@@ -159,12 +159,33 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
                 <div class="blog-details-sidebar d-grid gap-lg-6 gap-4 p-xxl-6 p-4 rounded bgc-3 position-sticky sticky-top sticky-top-position">
 
                     <div class="related-blog-card-wrapper d-grid gap-lg-6 gap-4 p-xxl-8 p-lg-6 p-4 rounded bgc-2 aos-init aos-animate" data-aos="zoom-in">
-                        <h4 class="fw-semibold">Top #100</h4>
+                        <h4 class="fw-semibold">Top #10</h4>
                         <span class="d-block border-dashed"></span>
                         <div class="related-blog-card d-grid gap-lg-6 gap-4">
 
 
-                            <?php foreach ($duogxaolin->get_list("SELECT * FROM `songs` LIMIT 10 ") as $row) {
+                            <?php foreach ($duogxaolin->get_list(
+                                "SELECT 
+                                COUNT(`playcount`.`PlayCountID`) AS `counts`,
+                                `songs`.`SongID` AS `SongID`,
+                                `songs`.`SongName` AS `SongName`,
+                                `songs`.`SongSlug` AS `SongSlug`,
+                                `songs`.`SongLogo` AS `SongLogo`
+                            FROM 
+                                `songs`
+                            INNER JOIN 
+                                `playcount` ON `songs`.`SongID` = `playcount`.`SongID`
+                            WHERE 
+                            `songs`.`SongID` = `playcount`.`SongID`
+                            GROUP BY 
+                                `songs`.`SongID`, 
+                                `songs`.`SongName`, 
+                                `songs`.`SongSlug`, 
+                                `songs`.`SongLogo`
+                            ORDER BY 
+                                `counts` DESC LIMIT 10"
+                            ) as $row) {
+                              //  print_r($row);
                                 $singer = $row['ArtistID'];
                                 $artist = $duogxaolin->get_row("SELECT * FROM `artists` WHERE `ArtistID` = '$singer'");
                             ?>
@@ -175,20 +196,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
                                     <div class="content-area">
                                         <h6 class="fw-normal mb-2 char-limit" data-maxlength="70"><?= $row['SongName'] ?>
                                         </h6>
-                                       
+
                                     </div>
                                 </a>
                             <?php } ?>
-
-
-
-
-
                         </div>
                         <span class="d-block border-dashed"></span>
-                        <span>
-                            <a href="tending-articles.html" class="link-btn">See More</a>
-                        </span>
+                       
                     </div>
 
 
@@ -228,7 +242,26 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
             <div class="col-lg-7">
                 <div class="swiper host-swiper-2">
                     <div class="swiper-wrapper">
-                        <?php foreach ($duogxaolin->get_list("SELECT * FROM `artists` LIMIT 10") as $row) { ?>
+                        <?php foreach ($duogxaolin->get_list(
+                            "SELECT 
+                            COUNT(`playcount`.`PlayCountID`) as `counts`,
+                        `artists`.`ArtistID` as `ArtistID`,
+                            `artists`.`ArtistName` as `ArtistName`,
+                            `artists`.`Country` AS `Country`,
+                            `artists`.`ArtistImage` AS `ArtistImage`
+                        FROM 
+                            `artists`
+                        INNER JOIN 
+                            `playcount` ON `artists`.`ArtistID` = `playcount`.`ArtistID`
+                        WHERE 
+                        `artists`.`ArtistID` = `playcount`.`ArtistID`
+                        GROUP BY 
+                        `artists`.`ArtistID`,
+                            `artists`.`ArtistName` ,
+                            `artists`.`Country` ,
+                            `artists`.`ArtistImage`
+                        ORDER BY 
+                            `counts` DESC LIMIT 10") as $row) { ?>
                             <div class="swiper-slide">
                                 <div class="host-card host-card-2 position-relative mx-auto">
                                     <div class="host-profile position-relative">

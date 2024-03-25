@@ -5,7 +5,8 @@ $type = xss($_GET['type']);
 $code = xss($_GET['code']);
 $songs = $duogxaolin->get_row(" SELECT * FROM `songs` WHERE `SongSlug` = '$code' ");
 if ($songs) {
-
+    $singer = $songs['ArtistID'];
+    $artist = $duogxaolin->get_row("SELECT * FROM `artists` WHERE `ArtistID` = '$singer'");
     $row = $duogxaolin->get_row(" SELECT * FROM `listeners` WHERE `token` = '$token'");
     // đã đăng nhập
     if ($row) { 
@@ -18,6 +19,7 @@ if ($songs) {
             $duogxaolin->insert("playcount", [
                 'token' => $uuid,
                 'ListenerID' => $account,
+                'ArtistID'   =>$artist['ArtistID'],
                 'SongID' => $songs['SongID'],
                 'ListenDateTime' => time()
             ]);
@@ -28,6 +30,7 @@ if ($songs) {
                     'token' => $uuid,
                     'ListenerID' => $account,
                     'SongID' => $songs['SongID'],
+                    'ArtistID'   =>$artist['ArtistID'],
                     'ListenDateTime' => time()
                 ]);
             }
@@ -47,6 +50,7 @@ if ($songs) {
             $duogxaolin->insert("playcount", [
                 'token' => $uuid,
                 'SongID' => $songs['SongID'],
+                'ArtistID'   =>$artist['ArtistID'],
                 'ListenDateTime' => time()
             ]);
         } else {
@@ -55,6 +59,7 @@ if ($songs) {
                 $duogxaolin->insert("playcount", [
                     'token' => $uuid,
                     'SongID' => $songs['SongID'],
+                    'ArtistID'   =>$artist['ArtistID'],
                     'ListenDateTime' => time()
                 ]);
             }

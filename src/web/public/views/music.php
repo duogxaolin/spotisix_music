@@ -12,10 +12,14 @@ list($part1, $part2) = splitString($string);
 $singer = $row['ArtistID'];
 $artist = $duogxaolin->get_row("SELECT * FROM `artists` WHERE `ArtistID` = '$singer'");
 $album  = $duogxaolin->get_row("SELECT * FROM `albums` WHERE `AlbumID` = '" . $row['AlbumID'] . "'");
+$counts = $duogxaolin->num_rows("SELECT * FROM `playcount` WHERE `SongID` = '".$row['SongID']."'");
+//echo $counts;
+$count  = format_cash($counts);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/header.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
 ?>
 <script type="text/javascript">
+    var dataInserted = false;
     const setAudio = () => {
         const audio = new Audio('<?= $row['FilePath'] ?>'); // add audio here 
         return audio
@@ -172,8 +176,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
                 <div class="d-flex flex-lg-column flex-wrap flex-sm-nowrap justify-content-center justify-content-lg-start gap-lg-10 gap-md-8 gap-6">
                     <div class="ms-lg-auto">
                         <div class="odometer-item d-center mb-2">
-                            <span class="odometer base fs-two text-nowrap" data-odometer-final="12.5">00.0</span>
-                            <span class="fs-two tcp-1">M</span>
+                            <span class="odometer base fs-two text-nowrap" data-odometer-final="<?=$count?>">00.0</span>
+                            <span class="fs-two tcp-1"></span>
                         </div>
                         <p>Lượt Nghe</p>
                     </div>

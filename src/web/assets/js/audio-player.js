@@ -81,6 +81,13 @@ const togglePlay = (audio, player) => {
     let playIcon = playBtn.querySelector('i');
 
     playBtn.addEventListener("click", () => {
+        if (!dataInserted) {
+            var currentUrl = window.location.pathname;
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/api/audio' + currentUrl, true);
+            xhr.send();
+            dataInserted = true;
+        }
         if (audio.paused) {
             audio.play();
             playIcon.classList.remove("ti-player-play")

@@ -14,6 +14,8 @@ RewriteRule ^api/auth/login$                app/controllers/auth/login.php [L]
 RewriteRule ^api/auth/register$                app/controllers/auth/register.php [L]
 
 RewriteRule ^san-pham/([A-Za-z0-9@#-]+)$       public/views/service/service.php?code=$1 [QSA,L]
+RewriteRule ^api/audio/([A-Za-z0-9@#-]+)/([A-Za-z0-9@#-]+)$     app/controllers/auth/audio.php?type=$1&code=$2 [QSA,L]
+
 
 #admin
 RewriteRule ^admin$                   public/admin [L]

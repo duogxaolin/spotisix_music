@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2024 at 04:29 PM
+-- Generation Time: Mar 25, 2024 at 06:42 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -29,10 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `albums` (
   `AlbumID` int(11) NOT NULL,
-  `AlbumName` varchar(75) NOT NULL,
+  `AlbumName` varchar(255) NOT NULL,
+  `AlbumSlug` varchar(255) NOT NULL,
   `ArtistID` int(11) DEFAULT NULL,
   `ReleaseYear` int(11) DEFAULT NULL,
-  `AlbumImage` varchar(150) DEFAULT NULL
+  `AlbumImage` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -43,11 +44,21 @@ CREATE TABLE `albums` (
 
 CREATE TABLE `artists` (
   `ArtistID` int(11) NOT NULL,
-  `ArtistName` varchar(75) NOT NULL,
-  `Country` varchar(20) DEFAULT NULL,
+  `ArtistName` varchar(255) NOT NULL,
+  `ArtistSlug` varchar(255) NOT NULL,
+  `Country` varchar(255) DEFAULT NULL,
   `BirthYear` int(11) DEFAULT NULL,
-  `ArtistImage` varchar(150) DEFAULT NULL
+  `ArtistImage` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `artists`
+--
+
+INSERT INTO `artists` (`ArtistID`, `ArtistName`, `ArtistSlug`, `Country`, `BirthYear`, `ArtistImage`) VALUES
+(1, 'Sơn Tùng M-TP', 'son-tung-m-tp', 'VietNam', 1994, '/assets/img/sontung.png'),
+(2, 'Taylor Swift', 'taylor-swift', 'America', 1989, '/assets/img/TaylorSwift.png'),
+(3, 'Jack', 'j97', 'Vietnam', 1997, '/assets/img/j97.png');
 
 -- --------------------------------------------------------
 
@@ -57,7 +68,8 @@ CREATE TABLE `artists` (
 
 CREATE TABLE `genres` (
   `GenreID` int(11) NOT NULL,
-  `GenreName` varchar(50) NOT NULL
+  `GenreName` varchar(255) NOT NULL,
+  `GenreLogo` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -68,11 +80,19 @@ CREATE TABLE `genres` (
 
 CREATE TABLE `listeners` (
   `ListenerID` int(11) NOT NULL,
-  `ListenerName` varchar(50) NOT NULL,
-  `Email` varchar(100) NOT NULL,
+  `ListenerName` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL,
-  `Address` varchar(255) DEFAULT NULL
+  `Address` varchar(255) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `listeners`
+--
+
+INSERT INTO `listeners` (`ListenerID`, `ListenerName`, `Email`, `Password`, `Address`, `token`) VALUES
+(1, 'Nguyễn Thái Dương', 'duogxaolin@gmail.com', '19008198', NULL, 'a14e2f41d10b6248a97b742cf1423e77');
 
 -- --------------------------------------------------------
 
@@ -84,8 +104,23 @@ CREATE TABLE `playcount` (
   `PlayCountID` int(11) NOT NULL,
   `ListenerID` int(11) DEFAULT NULL,
   `SongID` int(11) DEFAULT NULL,
-  `ListenDateTime` datetime DEFAULT current_timestamp()
+  `ListenDateTime` varchar(255) DEFAULT NULL,
+  `token` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `playcount`
+--
+
+INSERT INTO `playcount` (`PlayCountID`, `ListenerID`, `SongID`, `ListenDateTime`, `token`) VALUES
+(2, NULL, 1, '1711387399', '6601b2481ed72'),
+(8, NULL, 1, '1711388195', '6601b2481ed72'),
+(9, NULL, 1, '1711387683', '6601b2481ed72'),
+(10, NULL, 1, '1711387704', '6601b2481ed72'),
+(11, NULL, 1, '1711388007', '6601b2481ed72'),
+(12, NULL, 1, '1711388018', '6601b2481ed72'),
+(13, NULL, 1, '1711388024', '6601b2481ed72'),
+(17, NULL, 2, '1711388397', '6601b2481ed72');
 
 -- --------------------------------------------------------
 
@@ -108,7 +143,7 @@ CREATE TABLE `playlistdetails` (
 
 CREATE TABLE `playlists` (
   `PlaylistID` int(11) NOT NULL,
-  `PlaylistName` varchar(100) NOT NULL,
+  `PlaylistName` varchar(255) NOT NULL,
   `CreatorID` int(11) DEFAULT NULL,
   `Description` varchar(255) DEFAULT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
@@ -125,7 +160,7 @@ CREATE TABLE `ratings` (
   `ListenerID` int(11) DEFAULT NULL,
   `SongID` int(11) DEFAULT NULL,
   `Rating` int(11) DEFAULT NULL,
-  `Comment` varchar(200) DEFAULT NULL,
+  `Comment` text DEFAULT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -149,11 +184,21 @@ CREATE TABLE `songgenres` (
 CREATE TABLE `songs` (
   `SongID` int(11) NOT NULL,
   `SongName` varchar(255) NOT NULL,
+  `SongSlug` varchar(255) NOT NULL,
+  `SongLogo` varchar(255) NOT NULL,
   `ArtistID` int(11) DEFAULT NULL,
   `AlbumID` int(11) DEFAULT NULL,
-  `Duration` int(11) DEFAULT NULL,
+  `Duration` varchar(255) DEFAULT NULL,
   `FilePath` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `songs`
+--
+
+INSERT INTO `songs` (`SongID`, `SongName`, `SongSlug`, `SongLogo`, `ArtistID`, `AlbumID`, `Duration`, `FilePath`) VALUES
+(1, 'Chúng Ta Của Tương Lai', 'chung-ta-cua-tuong-lai', '/assets/img/ctqtl.png', 1, NULL, '08/03/2024', '/assets/music/chung-ta-cua-tuong-lai.mp3'),
+(2, 'Chúng Ta Của Hiện Tại', 'chung-ta-cua-hien-tai', '/assets/img/ctqht.png', 1, NULL, '20/12/2020', '/assets/music/chung-ta-cua-hien-tai.mp3');
 
 --
 -- Indexes for dumped tables
@@ -224,7 +269,7 @@ ALTER TABLE `ratings`
 -- Indexes for table `songgenres`
 --
 ALTER TABLE `songgenres`
-  ADD PRIMARY KEY (`SongID`),
+  ADD PRIMARY KEY (`SongID`,`GenreID`),
   ADD KEY `GenreID` (`GenreID`);
 
 --
@@ -250,7 +295,7 @@ ALTER TABLE `albums`
 -- AUTO_INCREMENT for table `artists`
 --
 ALTER TABLE `artists`
-  MODIFY `ArtistID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ArtistID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `genres`
@@ -262,13 +307,13 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT for table `listeners`
 --
 ALTER TABLE `listeners`
-  MODIFY `ListenerID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ListenerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `playcount`
 --
 ALTER TABLE `playcount`
-  MODIFY `PlayCountID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PlayCountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `playlistdetails`
@@ -289,16 +334,10 @@ ALTER TABLE `ratings`
   MODIFY `RatingID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `songgenres`
---
-ALTER TABLE `songgenres`
-  MODIFY `SongID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `SongID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SongID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

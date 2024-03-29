@@ -69,7 +69,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
                             </div>
                         </div>
                         <div class="host-info mt-lg-5 mt-2 ms-5">
-                            <a href="host-details.html" class="fs-four fw-semibold link-text mb-md-2"><?= $row['ArtistName'] ?></a>
+                            <a href="/singer/<?= $row['ArtistSlug'] ?>" class="fs-four fw-semibold link-text mb-md-2"><?= $row['ArtistName'] ?></a>
                             <span class="fs-sm"><?= $row['Country'] ?></span>
                         </div>
                     </div>
@@ -78,22 +78,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
             <?php } ?>
         </div>
         <!-- pagination start -->
-        <div class="row justify-content-center mt-lg-10 mt-sm-8 mt-6">
-            <div class="col-6">
-                <nav class="pagination d-center" aria-label="pagination">
-                    <ul class="pagination-items d-center gap-3">
-                        <li><a href="#"><i class="ti ti-arrow-left"></i>
-                            </a>
-                        </li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#"><i class="ti ti-arrow-right"></i></a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+       
         <!-- pagination end -->
     </div>
 </section>

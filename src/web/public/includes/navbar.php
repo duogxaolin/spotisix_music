@@ -17,9 +17,9 @@
             <div class="menu-toggler d-flex align-items-center justify-content-lg-between flex-lg-row flex-column gap-xxl-6 gap-4 w-100">
                 <!-- search area  -->
                 <div class="search-area search-page-3 d-flex align-items-center gap-4">
-                    <form action="/search" class="w-100 search-box-2">
+                    <form action="/search"  class="w-100 search-box-2">
                         <div class="input-area border bc-n400">
-                            <input type="text" name="keywords" placeholder="Search Episode.....">
+                            <input type="text" name="keywords" value="<?=$keywords?>" placeholder="Tìm bài hát.....">
                             <button type="submit" class="icon-btn">
                                 <span class="icon alt-size fs-xl fw-bold">
                                     <i class="ti ti-search"></i>

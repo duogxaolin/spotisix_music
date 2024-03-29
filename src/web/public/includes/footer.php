@@ -6,9 +6,9 @@
                         <h4 class="display-four fw-bold tcn-700 mb-lg-10 mb-sm-6 mb-4">
                            Đăng ký tải nhạc lên hệ thống của chúng tôi
                         </h4>
-                        <form action="#">
+                        <form submit-ajax="duogxaolin" action="/api/auth/create" method="POST">
                             <div class="input-area alt">
-                                <input type="email" placeholder="Enter email">
+                                <input type="email" name="email" placeholder="Enter email">
                                 <button type="submit" class="bttn-1 subscrib-btn">
                                     <span class="text fw-semibold">Subscribe</span>
                                     <span class=" icon d-center icon-right">
@@ -17,7 +17,7 @@
                                 </button>
                             </div>
                         </form>
-                    </div>
+                    </div> 
                 </div>
                 <div class="col-xl-5 col-lg-4">
                     <div class="news-letter-banner-wrapper">

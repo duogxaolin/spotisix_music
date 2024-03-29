@@ -3,8 +3,9 @@ RewriteEngine On
 ErrorDocument 404                                    /404.php
 #auth
 RewriteRule ^singer$                        public/views/singer.php [L]
+RewriteRule ^search$                        public/views/search.php [L]
 RewriteRule ^music/([A-Za-z0-9@#-]+)$          public/views/music.php?code=$1 [QSA,L]
-RewriteRule ^singer/([A-Za-z0-9@#-]+)$          public/views/artist.php?code=$1 [QSA,L]
+RewriteRule ^singer/([A-Za-z0-9@#-]+)$          public/views/view-singer.php?code=$1 [QSA,L]
 
 RewriteRule ^login$                        public/views/login.php [L]
 RewriteRule ^register$                        public/views/register.php [L]
@@ -12,16 +13,19 @@ RewriteRule ^api/auth/contact$                app/controllers/auth/contact.php [
 
 RewriteRule ^api/auth/login$                app/controllers/auth/login.php [L]
 RewriteRule ^api/auth/register$                app/controllers/auth/register.php [L]
+RewriteRule ^api/auth/create$                app/controllers/auth/create.php [L]
 
 RewriteRule ^san-pham/([A-Za-z0-9@#-]+)$       public/views/service/service.php?code=$1 [QSA,L]
 RewriteRule ^api/audio/([A-Za-z0-9@#-]+)/([A-Za-z0-9@#-]+)$     app/controllers/auth/audio.php?type=$1&code=$2 [QSA,L]
 
-
 #admin
-RewriteRule ^admin$                   public/admin [L]
-
-
-
+RewriteRule ^admin$                   public/admin/index.php [L]
+RewriteRule ^admin/login$                   public/admin/login.php [L]
+RewriteRule ^admin/singer$                   public/admin/singer.php [L]
+RewriteRule ^admin/music$                   public/admin/music.php [L]
+RewriteRule ^google/api/login$                   public/admin/login.php [L]
+RewriteRule ^api/admin/singer$                app/controllers/admin/singer.php [L]
+RewriteRule ^api/admin/music$                app/controllers/admin/music.php [L]
 #service
 RewriteRule ^([A-Za-z0-9@#-]+)$       public/views/service/index.php?code=$1 [QSA,L]
 

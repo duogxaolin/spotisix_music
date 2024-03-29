@@ -64,10 +64,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
         <div class="search-with-filter p-sm-3 p-1 mt-lg-15 mt-sm-10 mt-6 bgc-3" data-aos="fade-down" data-aos-duration="1000">
             <form action="/search" class="d-flex align-items-sm-center align-items-baseline gap-md-6 gap-sm-3 gap-1">
                 <div class="select-category-area">
-                    <select class="select-category">
-                        <option value="1">All</option>
-                        <option value="3">Nhạc</option>
-                        <option value="2">Nghệ sĩ</option>
+                    <select name="type" class="select-category">
+                        <option value="">Tất cả</option>
+                        <option value="3">Theo tên bài hát</option>
+                        <option value="2">Theo Nghệ sĩ</option>
+                        <option value="" disabled>Lời bài hát(comming soon)</option>
                     </select>
                 </div>
                 <div class="input-area p-0 w-100">
@@ -101,7 +102,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
 <section class="blog-details-section pb-120 texture-bg-2 overflow-visible">
     <div class="container">
         <div class="row g-6">
-            <div class="col-xl-8">
+            <div class="col-xl-9">
                 <div class="blog-details-content-wrapper d-grid gap-6 p-xxl-6 p-lg-4 p-3 rounded bgc-3">
                     <h4 class="fw-semibold">Nhạc mới cập nhập</h4>
                     <span class="d-block border-dashed"></span>
@@ -155,7 +156,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
 
 
             </div>
-            <div class="col-xl-4">
+            <div class="col-xl-3">
                 <div class="blog-details-sidebar d-grid gap-lg-6 gap-4 p-xxl-6 p-4 rounded bgc-3 position-sticky sticky-top sticky-top-position">
 
                     <div class="related-blog-card-wrapper d-grid gap-lg-6 gap-4 p-xxl-8 p-lg-6 p-4 rounded bgc-2 aos-init aos-animate" data-aos="zoom-in">
@@ -285,7 +286,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
                                     </div>
                                     <div class="host-info position-absolute bottom-0 start-0 w-100 mb-lg-6 mb-4 text-center">
                                         <h4 class="fw-semibold mb-2">
-                                            <a href="host-details.html" class="link-text">
+                                            <a href="/singer/<?= $row['ArtistSlug'] ?>" class="link-text">
                                                 <?= $row['ArtistName'] ?>
                                             </a>
                                         </h4>

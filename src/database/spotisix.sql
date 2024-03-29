@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2024 at 07:27 PM
+-- Generation Time: Mar 29, 2024 at 06:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `spotisix`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `secret` varchar(255) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `ranks` varchar(255) NOT NULL,
+  `token` text NOT NULL,
+  `ip` varchar(255) NOT NULL,
+  `time` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `email`, `secret`, `fullname`, `ranks`, `token`, `ip`, `time`) VALUES
+(5, 'duogxaolin@gmail.com', 'SRJZRDHGGVYGBI2I', 'Admin', '1', 'efe476eca4b8a5623fc1d38556f53dc2', '::1', '1711684098');
 
 -- --------------------------------------------------------
 
@@ -48,17 +72,19 @@ CREATE TABLE `artists` (
   `ArtistSlug` varchar(255) NOT NULL,
   `Country` varchar(255) DEFAULT NULL,
   `BirthYear` int(11) DEFAULT NULL,
-  `ArtistImage` varchar(255) DEFAULT NULL
+  `ArtistImage` varchar(255) DEFAULT NULL,
+  `ArtistNote` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `artists`
 --
 
-INSERT INTO `artists` (`ArtistID`, `ArtistName`, `ArtistSlug`, `Country`, `BirthYear`, `ArtistImage`) VALUES
-(1, 'Sơn Tùng M-TP', 'son-tung-m-tp', 'VietNam', 1994, '/assets/img/sontung.png'),
-(2, 'Taylor Swift', 'taylor-swift', 'America', 1989, '/assets/img/TaylorSwift.png'),
-(3, 'Jack', 'j97', 'Vietnam', 1997, '/assets/img/j97.png');
+INSERT INTO `artists` (`ArtistID`, `ArtistName`, `ArtistSlug`, `Country`, `BirthYear`, `ArtistImage`, `ArtistNote`) VALUES
+(1, 'Sơn Tùng MTP', 'son-tung-m-tp', 'VietNam', 1994, '/assets/img/sontung.png', 'Nguyễn Thanh Tùng, thường được biết đến với nghệ danh Sơn Tùng M-TP, là một nam ca sĩ kiêm sáng tác nhạc, rapper và diễn viên người Việt Nam. Sinh ra ở thành phố Thái Bình, thời thơ ấu, Sơn Tùng thường đi hát ở Cung văn hoá thiếu nhi tỉnh Thái Bình và học chơi đàn organ.'),
+(2, 'Taylor Swift', 'taylor-swift', 'America', 1989, '/assets/img/TaylorSwift.png', 'Taylor Alison Swift là một nữ ca sĩ kiêm nhạc sĩ sáng tác bài hát người Mỹ. Cô nhận được nhiều sự quan tâm rộng rãi đến từ truyền thông và công chúng cũng như được nhiều ấn phẩm vinh danh là một trong những gương mặt tiêu biểu trong các danh sách hàng đầu.'),
+(3, 'Jack', 'j97', 'Vietnam', 1997, '/assets/img/j97.png', 'Trịnh Trần Phương Tuấn, thường được biết đến với nghệ danh Jack – J97 aka 5 củ, thằng bỏ con, là một nam ca sĩ kiêm sáng tác nhạc, rapper, diễn viên người Việt Nam. Jack - J97 bắt đầu được biết đến khi hoạt động trong nhóm nhạc G5R và phát hành bài hát \"Hồng nhan\". '),
+(5, 'Dương xạo lìn', 'duong-xao-lin', 'VietNam', 2003, '/assets/images/duong-xao-lin_13988174.png', 'Hi there, I\'m a software developer with extensive experience in coding and software development. I\'m passionate about creating innovative solutions, and I\'m dedicated to my craft. With my creativity, technical skills, and attention to detail, I\'m confident I can help you find the best software solution for your needs.');
 
 -- --------------------------------------------------------
 
@@ -92,7 +118,7 @@ CREATE TABLE `listeners` (
 --
 
 INSERT INTO `listeners` (`ListenerID`, `ListenerName`, `Email`, `Password`, `Address`, `token`) VALUES
-(1, 'Nguyễn Thái Dương', 'duogxaolin@gmail.com', '19008198', NULL, 'a14e2f41d10b6248a97b742cf1423e77');
+(1, 'Nguyễn Thái Dương', 'duogxaolin@gmail.com', '19008198', NULL, '382765f49fe60f3c151a200f211c3fa4');
 
 -- --------------------------------------------------------
 
@@ -124,7 +150,12 @@ INSERT INTO `playcount` (`PlayCountID`, `ListenerID`, `SongID`, `ArtistID`, `Lis
 (17, NULL, 2, 1, '1711388397', '6601b2481ed72'),
 (18, NULL, 3, 1, '1711390612', '6601b2481ed72'),
 (19, NULL, 4, 3, '1711390842', '6601b2481ed72'),
-(20, NULL, 3, 2, '1711390851', '6601b2481ed72');
+(20, NULL, 3, 2, '1711390851', '6601b2481ed72'),
+(21, NULL, 1, 1, '1711616843', '6601b2481ed72'),
+(22, NULL, 1, 1, '1711648657', '6601b2481ed72'),
+(23, 1, 1, 1, '1711649342', '382765f49fe60f3c151a200f211c3fa4'),
+(24, NULL, 1, 1, '1711685887', '660640ff35b6c'),
+(25, NULL, 1, 1, '1711686852', '660640ff35b6c');
 
 -- --------------------------------------------------------
 
@@ -171,6 +202,26 @@ CREATE TABLE `ratings` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `registration`
+--
+
+CREATE TABLE `registration` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `create_date` varchar(255) NOT NULL,
+  `ip` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`id`, `email`, `create_date`, `ip`) VALUES
+(4, 'duogxaolin@gmail.com', '1711610158', '::1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `songgenres`
 --
 
@@ -204,11 +255,18 @@ INSERT INTO `songs` (`SongID`, `SongName`, `SongSlug`, `SongLogo`, `ArtistID`, `
 (1, 'Chúng Ta Của Tương Lai', 'chung-ta-cua-tuong-lai', '/assets/img/ctqtl.png', 1, NULL, '08/03/2024', '/assets/music/chung-ta-cua-tuong-lai.mp3'),
 (2, 'Chúng Ta Của Hiện Tại', 'chung-ta-cua-hien-tai', '/assets/img/ctqht.png', 1, NULL, '20/12/2020', '/assets/music/chung-ta-cua-hien-tai.mp3'),
 (3, 'Blank Space', 'blank-space', '/assets/img/bank-space.png', 2, NULL, '10/11/2014', '/assets/music/BlankSpace-TaylorSwift-12613798.mp3'),
-(4, 'Thiên Lý Ơi', 'thien-ly-oi', '/assets/img/tlo.png', 3, NULL, '22/2/2024', '/assets/music/ThienLyOi-JackJ97-13829746.mp3');
+(4, 'Thiên Lý Ơi', 'thien-ly-oi', '/assets/img/tlo.png', 3, NULL, '22/2/2024', '/assets/music/ThienLyOi-JackJ97-13829746.mp3'),
+(5, 'Hãy trao cho anh', 'hay-trao-cho-anh', '/assets/images/hay-trao-cho-anh_74148827.png', 1, NULL, '29/03/2024', '/assets/music/hay-trao-cho-anh.mp3');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
 -- Indexes for table `albums`
@@ -273,6 +331,12 @@ ALTER TABLE `ratings`
   ADD KEY `SongID` (`SongID`);
 
 --
+-- Indexes for table `registration`
+--
+ALTER TABLE `registration`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `songgenres`
 --
 ALTER TABLE `songgenres`
@@ -293,6 +357,12 @@ ALTER TABLE `songs`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `albums`
 --
 ALTER TABLE `albums`
@@ -302,7 +372,7 @@ ALTER TABLE `albums`
 -- AUTO_INCREMENT for table `artists`
 --
 ALTER TABLE `artists`
-  MODIFY `ArtistID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ArtistID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `genres`
@@ -320,7 +390,7 @@ ALTER TABLE `listeners`
 -- AUTO_INCREMENT for table `playcount`
 --
 ALTER TABLE `playcount`
-  MODIFY `PlayCountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `PlayCountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `playlistdetails`
@@ -341,10 +411,16 @@ ALTER TABLE `ratings`
   MODIFY `RatingID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `registration`
+--
+ALTER TABLE `registration`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `SongID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `SongID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

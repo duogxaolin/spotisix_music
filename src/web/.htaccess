@@ -7,11 +7,17 @@ RewriteRule ^search$                        public/views/search.php [L]
 RewriteRule ^music/([A-Za-z0-9@#-]+)$          public/views/music.php?code=$1 [QSA,L]
 RewriteRule ^singer/([A-Za-z0-9@#-]+)$          public/views/view-singer.php?code=$1 [QSA,L]
 
-RewriteRule ^login$                        public/views/login.php [L]
-RewriteRule ^register$                        public/views/register.php [L]
+RewriteRule ^login$                        public/views/auth/login.php [L]
+RewriteRule ^register$                        public/views/auth/register.php [L]
+RewriteRule ^profile$                        public/views/auth/profile.php [L]
+RewriteRule ^profile/history$                        public/views/auth/history.php [L]
+RewriteRule ^create/singer$                        public/views/auth/create.php [L]
+RewriteRule ^password$                        public/views/auth/password.php [L]
 RewriteRule ^api/auth/contact$                app/controllers/auth/contact.php [L]
 
 RewriteRule ^api/auth/login$                app/controllers/auth/login.php [L]
+RewriteRule ^api/auth/password$                app/controllers/auth/password.php [L]
+RewriteRule ^api/auth/logout$                app/controllers/auth/logout.php [L]
 RewriteRule ^api/auth/register$                app/controllers/auth/register.php [L]
 RewriteRule ^api/auth/create$                app/controllers/auth/create.php [L]
 
@@ -30,3 +36,6 @@ RewriteRule ^api/admin/music$                app/controllers/admin/music.php [L]
 RewriteRule ^([A-Za-z0-9@#-]+)$       public/views/service/index.php?code=$1 [QSA,L]
 
 RewriteRule ^([A-Za-z0-9@#-]+)/([A-Za-z0-9@#-]+)$       public/views/service/index.php?code=$1&type=$2 [QSA,L]
+
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteRule \.(png|jpeg|webm|gif)$ /assets/images/error_img.png [L]

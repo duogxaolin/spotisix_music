@@ -1,0 +1,200 @@
+.header-section .user-profile-btn {
+    max-width: 48px;
+    min-width: 48px;
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-content-area {
+    position: fixed;
+    top: 90px;
+    right: 0;
+    max-width: 300px;
+    width: 100%;
+    max-height: 80vh;
+    z-index: 999;
+    transform: translateX(100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.border-full {
+    border: 1px solid rgb(var(--n600));
+}
+
+.bgc-2 {
+    background-color: rgb(var(--bg-2));
+}
+
+.profile-content-area .profile-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    margin: 0 auto;
+}
+
+.profile-content-area.active {
+    transform: translateX(0);
+}
+
+.border-full {
+    border: 1px solid rgb(var(--n600));
+}
+
+.bgc-2 {
+    background-color: rgb(var(--bg-2));
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+.d-grid {
+    display: grid !important;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+.fw-medium {
+    font-weight: 400 !important;
+}
+
+.fs-lg {
+    font-size: 18px;
+    line-height: 150%;
+}
+
+.fw-medium {
+    font-weight: 500 !important;
+}
+
+.tcp-1 {
+    color: rgb(var(--primary-1));
+}
+
+.fw-normal {
+    font-weight: 300 !important;
+}
+
+.fs-sm {
+    font-size: 14px;
+    line-height: 150%;
+}
+
+.border-dashed {
+    border-top: 1px dashed rgba(var(--primary-1), 0.3);
+}
+
+.gap-2 {
+    gap: 0.5rem !important;
+}
+
+.profile-content-area .profile-menu .profile-menu-item {
+    transition: var(--transition);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rounded {
+    border-radius: var(--bs-border-radius) !important;
+}
+
+.py-1 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+}
+
+.px-2 {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
+}
+
+.fs-lg {
+    font-size: 18px;
+    line-height: 150%;
+}
+
+.post-details-input-area .note-editor.note-frame {
+    border: none;
+    box-shadow: none;
+}
+
+.post-details-input-area .note-editor.note-frame .note-toolbar {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0 32px;
+    border-radius: 16px 16px 0 0;
+    border: none;
+}
+
+.post-details-input-area .note-editor.note-frame .note-toolbar .note-btn-group .note-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, );
+}
+
+.post-details-input-area .note-editor.note-frame .note-toolbar .note-btn-group .note-btn.active {
+    background: #000;
+}
+
+.post-details-input-area .note-editor.note-frame .note-toolbar .note-icon-caret {
+    display: none;
+}
+
+.post-details-input-area .note-editor.note-frame .note-toolbar .note-dropdown-menu {
+    background: #000;
+    border: none;
+    color: #000;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.post-details-input-area .note-editor.note-frame .note-toolbar .note-dropdown-menu .note-dropdown-item {
+    color: #000;
+}
+
+.post-details-input-area .note-editor.note-frame .note-toolbar .note-dropdown-menu .note-dropdown-item:hover {
+    background: #000;
+}
+
+.post-details-input-area .note-editor.note-frame .note-editing-area {
+    padding: 0 32px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0 0 16px 16px;
+    color: rgba(255, 255, 255, );
+}
+
+.post-details-input-area .note-editor.note-frame .note-editing-area .note-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.post-details-input-area .note-editor.note-frame .note-statusbar {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .post-details-input-area .note-editor.note-frame .note-toolbar {
+        padding: 0 16px;
+    }
+    .post-details-input-area .note-editor.note-frame .note-editing-area {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 575px) {
+    .post-details-input-area .note-editor.note-frame .note-toolbar {
+        padding: 0 8px;
+    }
+    .post-details-input-area .note-editor.note-frame .note-editing-area {
+        padding: 0 8px;
+    }
+}

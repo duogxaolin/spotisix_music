@@ -487,6 +487,46 @@ $(document).ready(() => {
             $(this).next(".accordion-content").slideToggle();
         }
     });
+    // summer note
+    if ($("#summernote") !== null) {
+        $('#summernote').summernote({
+            placeholder: 'Write text',
+            tabsize: 2,
+            height: 200,
+            minHeight: 200,
+            maxHeight: 400,
+            focus: false,
+            toolbar: [
+                ['fontsize', ['fontsize']],
+                ['font', ['bold', 'underline', 'italic', 'clear']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['misc', ['undo', 'redo']],
+                ['height', ['height']],
+                ['view', ['codeview']],
+            ]
+        })
+    }
+    // summer note
+    if ($("#singer") !== null) {
+        $('#singer').summernote({
+            placeholder: 'Mô tả ngắn về quá trình phát triển âm nhạc của bản thân',
+            tabsize: 2,
+            height: 200,
+            minHeight: 200,
+            maxHeight: 400,
+            focus: false,
+            toolbar: [
+                ['fontsize', ['fontsize']],
+                ['font', ['bold', 'underline', 'italic', 'clear']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['misc', ['undo', 'redo']],
+                ['height', ['height']],
+                ['view', ['codeview']],
+            ]
+        })
+    }
 
     // custom tab 
     $(".tablinks .nav-links").each(function() {
@@ -511,6 +551,7 @@ $(document).ready(() => {
             return attr == 'password' ? 'text' : 'password';
         })
     })
+
 
     // like comment
     // like

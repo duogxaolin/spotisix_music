@@ -17,9 +17,9 @@
             <div class="menu-toggler d-flex align-items-center justify-content-lg-between flex-lg-row flex-column gap-xxl-6 gap-4 w-100">
                 <!-- search area  -->
                 <div class="search-area search-page-3 d-flex align-items-center gap-4">
-                    <form action="/search"  class="w-100 search-box-2">
+                    <form action="/search" class="w-100 search-box-2">
                         <div class="input-area border bc-n400">
-                            <input type="text" name="keywords" value="<?=$keywords?>" placeholder="Tìm bài hát.....">
+                            <input type="text" name="keywords" value="<?= $keywords ?>" placeholder="Tìm bài hát.....">
                             <button type="submit" class="icon-btn">
                                 <span class="icon alt-size fs-xl fw-bold">
                                     <i class="ti ti-search"></i>
@@ -44,16 +44,16 @@
                         <ul class="nav-menu-items gap-3 gap-lg-8">
                             <li class="item">
                                 <a href="/">Home</a>
-                               
+
                             </li>
                             <li class="item">
                                 <a href="/singer">Ca Sĩ</a>
-                               
+
                             </li>
                             <li class="item">
                                 <a href="/album">Album</a>
                             </li>
-                         
+
                         </ul>
                     </div>
                 </div>
@@ -87,27 +87,51 @@
                     </div>
                 <?php } else { ?>
                     <!-- user profile  -->
-                    <div class="user-logedin d-none d-lg-flex gap-xxl-6 gap-lg-4 order-last">
-                        <button class="user-profile-btn">
-                            <img class="w-100 rounded-circle" src="/assets/img/user.png" alt="user">
-                        </button>
 
-                      
+
+                    <div class="user-logedin d-lg-flex gap-xxl-6 gap-lg-4 order-last">
+                        <div class="dropdown">
+                            <button class="bttn-1 bttn-outline alt-position text-nowrap" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class=" icon d-center icon-right">
+                                    <img class="w-100 rounded-circle" src="/assets/img/user.png" alt="user">
+                                </span>
+                                <?= $auth['ListenerName'] ?>
+                            </button>
+
+                            <div class="profile-content-area p-lg-5 p-sm-3 p-1 border-full rounded-3 bgc-2 dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <div class="profile-content position-relative">
+                                    <button class="profile-close-btn position-absolute top-0 end-0"><i class="fas fa-times"></i></button>
+                                    <div class="profile-info d-grid justify-content-center">
+                                        <div class="profile-img mb-2">
+                                            <img class="w-100 rounded-circle" src="/assets/img/user.png" alt="user">
+                                        </div>
+                                        <span class="fs-lg fw-medium text-white"><?= $auth['ListenerName'] ?></span>
+                                        <span class="fs-sm fw-normal tcp-1"> <?= $auth['Email'] ?></span>
+                                    </div>
+                                    <span class="d-block border-dashed my-lg-4 my-2"></span>
+                                    <ul class="profile-menu d-grid gap-2">
+                                        <li><a class="profile-menu-item py-1 px-2 rounded text-white" href="/profile"><span class="fs-lg"><i class="ti ti-user"></i></span> Profile</a></li>
+                                        <li><a class="profile-menu-item py-1 px-2 rounded text-white" href="balance-history.html"><span class="fs-lg"><i class="ti ti-wallet"></i></span>Balance</a></li>
+                                        <li><a class="profile-menu-item py-1 px-2 rounded  text-white" href="javascript:void(0)" onclick="logout()"><span class="fs-lg"><i class="ti ti-logout"></i></span> Log Out</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
+
+
+                <?php } ?>
             </div>
-
-
-        <?php } ?>
+            <!-- menu toggler  -->
+            <button class="navbar-toggle-btn d-block d-lg-none" type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
     </div>
 
-    <!-- menu toggler  -->
-    <button class="navbar-toggle-btn d-block d-lg-none" type="button">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-    </nav>
-    </div>
 </header>

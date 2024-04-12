@@ -247,7 +247,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
                             "SELECT 
                             COUNT(`playcount`.`PlayCountID`) as `counts`,
                         `artists`.`ArtistID` as `ArtistID`,
-                            `artists`.`ArtistName` as `ArtistName`,
+                        `artists`.`ArtistName` as `ArtistName`,
+                        `artists`.`ArtistSlug` as `ArtistSlug`,
                             `artists`.`Country` AS `Country`,
                             `artists`.`ArtistImage` AS `ArtistImage`
                         FROM 
@@ -260,6 +261,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
                         `artists`.`ArtistID`,
                             `artists`.`ArtistName` ,
                             `artists`.`Country` ,
+                            `artists`.`ArtistSlug`,
                             `artists`.`ArtistImage`
                         ORDER BY 
                             `counts` DESC LIMIT 10") as $row) { ?>

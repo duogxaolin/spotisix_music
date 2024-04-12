@@ -8,13 +8,6 @@ if (!$mod) {
         die();
     }
 } else {
-    if (myip() != $mod['ip']) {
-        $duogxaolin->update("admin", [
-            'token'  => md5(time()),
-        ], " `id` = '" . $mod['id'] . "' ");
-        require_once($_SERVER['DOCUMENT_ROOT'] . '/404.php');
-        die();
-    }
 }
 ?>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">

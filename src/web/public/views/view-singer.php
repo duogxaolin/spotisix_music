@@ -22,7 +22,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/navbar.php');
                         </span>
                         <div
                             class="d-flex flex-column flex-lg-row align-items-center justify-content-center justify-content-lg-start gap-xxl-8 gap-lg-6">
-                            <h2 class="hero-title display-two mb-4">Ca Sĩ</h2>
+                            <h2 class="hero-title display-two mb-4"><?=$row['ArtistType']?></h2>
                             <div class="record-img">
                                 <div class="one-direction-animation d-flex">
                                     <img class="w-100" src="/assets/img/record-7.png" alt="record">

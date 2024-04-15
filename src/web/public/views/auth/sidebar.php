@@ -78,13 +78,29 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/config.php');
                                 </li>
                             <?php } else { ?>
                                 <li>
-                                    <a href="/create/singer" class="side-menu-link rounded-4 <?php echo ($duogxaolin->home_uri() == '/create/singer') ? 'active' : ''; ?>">
+                                    <a href="/dashboard/singer" class="side-menu-link rounded-4 <?php echo ($duogxaolin->home_uri() == '/dashboard/singer') ? 'active' : ''; ?>">
                                         <div class="d-flex align-items-center gap-2 py-lg-3 py-2 px-xxl-6 px-4">
                                             <span class="icon fs-xl"><i class="fas fa-user"></i></span>
                                             <span>Thông Tin</span>
                                         </div>
                                     </a>
                                 </li>
+                                <li>
+                                <a href="/dashboard/music" class="side-menu-link rounded-4 <?php echo ($duogxaolin->home_uri() == '/dashboard/music') ? 'active' : ''; ?>">
+                                    <div class="d-flex align-items-center gap-2 py-lg-3 py-2 px-xxl-6 px-4">
+                                        <span class="icon fs-xl"><i class="fas fa-music"></i></span>
+                                        <span>Bài Hát</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/addon" class="side-menu-link rounded-4 <?php echo ($duogxaolin->home_uri() == '/dashboard/addon') ? 'active' : ''; ?>">
+                                    <div class="d-flex align-items-center gap-2 py-lg-3 py-2 px-xxl-6 px-4">
+                                        <span class="icon fs-xl"><i class="fas fa-file-audio"></i></span>
+                                        <span>Thêm Bài Hát</span>
+                                    </div>
+                                </a>
+                            </li>
                             <?php  } ?>
                         </ul>
                     </div>

@@ -546,13 +546,113 @@ $(document).ready(() => {
 
     //password toggle
     $('.show-password').on('click', function() {
-        $(this).find('i').toggleClass('ti-eye-closed ti-eye');
-        $('#password').attr('type', function(index, attr) {
-            return attr == 'password' ? 'text' : 'password';
+            $(this).find('i').toggleClass('ti-eye-closed ti-eye');
+            $('#password').attr('type', function(index, attr) {
+                return attr == 'password' ? 'text' : 'password';
+            })
         })
+        // file upload controller
+    function fileUploadBoxController() {
+        $('.input-file').removeClass('active');
+        if ($('.file-type-select-option').val() == 0) {
+            $(".audio-upload-area").addClass('active');
+        } else if ($('.file-type-select-option').val() == 1) {
+            $(".video-upload-area").addClass('active');
+        } else if ($('.file-type-select-option').val() == 2) {
+            $(".link-upload-area").addClass('active');
+        }
+    }
+    fileUploadBoxController()
+    $('.file-type-select-option').on('change', fileUploadBoxController)
+
+    // img input controller
+    let uploadBtn = document.querySelectorAll('.uploadPreview');
+    if (uploadBtn) {
+
+        uploadBtn.forEach(element => {
+            element.addEventListener('click', function(e) {
+                e.preventDefault()
+                let inputFile = element.nextElementSibling
+                inputFile.click()
+
+                let previewImg = element.closest('.upload-post-img').querySelector('.previewImg')
+                let warningMsg = element.closest('.upload-post-img').querySelector('.warning-msg')
+                let cancelUpload = element.closest('.upload-post-img').querySelector('.cancelUpload')
+                inputFile.addEventListener('change', function() {
+                    if (inputFile.files.length > 0) {
+                        if (warningMsg) {
+                            //const maxSizeInBytes = 1024 * 1024; // max img size 1MB
+                            const maxSizeInBytes = 2048 * 2048; // max img size .5MB
+                            let fileSize = inputFile.files[0].size
+                            if (fileSize > maxSizeInBytes) {
+                                warningMsg.innerText = 'File size exceeds the limit. Please choose a file smaller then 2MB.'
+                                warningMsg.style.display = 'block'
+                                previewImg.src = '/assets/img/upload-preview.png'
+                            } else {
+                                previewImg.src = URL.createObjectURL(inputFile.files[0])
+                                warningMsg.style.display = 'none'
+                            }
+                        } else {
+                            previewImg.src = URL.createObjectURL(inputFile.files[0])
+                        }
+                    }
+                })
+
+                // cancel upload
+                if (cancelUpload) {
+                    cancelUpload.addEventListener('click', function(e) {
+                        e.preventDefault()
+                        inputFile.value = null
+                        previewImg.src = '/assets/img/upload-preview.png'
+                    })
+                }
+            })
+        });
+    }
+
+    $('.bookmark-toggler').on('click', function() {
+        $(this).parents('tr').slideUp();
     })
 
+    $('.modal-toggler').on('click', function() {
+        $(this).siblings('.balance-modal-area').toggleClass('active');
+    })
+    $('.close-balance-modal').on('click', function() {
+        $(this).parents('.balance-modal-area').removeClass('active');
+    })
 
+    // select 2 js
+    if ($(".episode-listening-report-select") !== null) {
+        $(".episode-listening-report-select").select2({
+            minimumResultsForSearch: Infinity
+        })
+    }
+    if ($(".language-select-option") !== null) {
+        $(".language-select-option").select2({
+            // width: "auto",
+            width: "100%",
+            dropdownAutoWidth: true,
+        })
+    }
+    if ($(".category-select-option") !== null) {
+        $(".category-select-option").select2({
+            // width: "auto",
+            width: "100%",
+            dropdownAutoWidth: true,
+        })
+    }
+
+    // file upload controller
+    function fileUploadBoxController() {
+        $('.input-file').removeClass('active');
+        if ($('.file-type-select-option').val() == 0) {
+            $(".audio-upload-area").addClass('active');
+        } else if ($('.file-type-select-option').val() == 1) {
+            $(".video-upload-area").addClass('active');
+        } else if ($('.file-type-select-option').val() == 2) {
+            $(".link-upload-area").addClass('active');
+        }
+    }
     // like comment
     // like
     $('.like-btn').on('click', function() {

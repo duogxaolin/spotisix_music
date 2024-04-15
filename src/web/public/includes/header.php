@@ -8,7 +8,7 @@
     <meta name="author" content="pixelaxis">
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="podcast, audio, interviews, discussions, entertainment,ashadul">
-    <title>Home 3 | Podcastio</title>
+    <title>Spotisix - Music</title>
     <link rel="shortcut icon" href="/assets/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
@@ -34,11 +34,5 @@
         </div>
     </div>
     <?php
-    if (isset($_COOKIE['session_token'])) {
-        $token = $_COOKIE['session_token'];
-        $auth = $duogxaolin->get_row(" SELECT * FROM `listeners` WHERE `token` = '$token'");
-        if (!$auth) {
-            setcookie("session_token", "", time() - 3600, "/");
-        }
-    }
+
     ?>

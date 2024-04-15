@@ -63,7 +63,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/public/views/auth/sidebar.php');
 
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/public/includes/footer.php');
-?><script>
+?>
+<script>
 $(document).ready(function() {
     $('#myTable').DataTable();
 });

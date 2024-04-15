@@ -24,6 +24,13 @@ RewriteRule ^api/auth/create$                app/controllers/auth/create.php [L]
 RewriteRule ^san-pham/([A-Za-z0-9@#-]+)$       public/views/service/service.php?code=$1 [QSA,L]
 RewriteRule ^api/audio/([A-Za-z0-9@#-]+)/([A-Za-z0-9@#-]+)$     app/controllers/auth/audio.php?type=$1&code=$2 [QSA,L]
 
+#singer  
+RewriteRule ^dashboard/singer$                        public/views/dashboard/index.php [L]
+RewriteRule ^dashboard/music$                        public/views/dashboard/music.php [L]
+RewriteRule ^dashboard/addon$                        public/views/dashboard/addon.php [L]
+RewriteRule ^api/singer/update$                       app/controllers/singer/update.php [L]
+RewriteRule ^api/singer/music$                       app/controllers/singer/music.php [L]
+RewriteRule ^dashboard/view/([A-Za-z0-9@#-]+)$       public/views/dashboard/views.php?SongID=$1 [QSA,L]
 #admin
 RewriteRule ^admin$                   public/admin/index.php [L]
 RewriteRule ^admin/login$                   public/admin/login.php [L]
